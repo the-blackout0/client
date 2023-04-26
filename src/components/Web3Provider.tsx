@@ -8,6 +8,7 @@ const client = createClient(
 		appName: APP_NAME,
 		autoConnect: true,
 		infuraId: process.env.NEXT_PUBLIC_INFURA_ID,
+		alchemyId: process.env.NEXT_PUBLIC_ALCHEMY_ID,
 	})
 )
 
