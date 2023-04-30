@@ -3,21 +3,13 @@ import { APP_NAME } from '@/lib/consts'
 import ConnectWallet from '@/components/ConnectWallet'
 import { BookOpenIcon, CodeIcon, ShareIcon } from '@heroicons/react/outline'
 import ThemeSwitcher from '@/components/ThemeSwitcher'
+import PageWrapper from '@/components/wrappers/PageWrapper'
 
 const Home: FC = () => {
 	return (
-		<div className="relative flex justify-center min-h-screen py-4 bg-gray-100 items-top dark:bg-gray-900 sm:items-center sm:pt-0">
-			<div className="absolute top-6 right-6">
-				<ConnectWallet />
-			</div>
+		<PageWrapper>
 			<ThemeSwitcher className="absolute bottom-6 right-6" />
 			<div className="flex flex-col ">
-				<div className="mt-10 mb-10">
-					<div className="mt-5 space-x-3 text-xl">
-						<a href="/supa">Supabase</a>
-						<a href="/profile">Profile</a>
-					</div>
-				</div>
 				<div className="max-w-6xl mx-auto sm:px-6 lg:px-8">
 					<div className="flex justify-center pt-8 sm:justify-start sm:pt-0">
 						<h1 className="text-6xl font-bold dark:text-white">{APP_NAME}</h1>
@@ -158,7 +150,7 @@ const Home: FC = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</PageWrapper>
 	)
 }
 

@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useAccount, useBalance, useConnect, useDisconnect, usePrepareSendTransaction, useSendTransaction } from 'wagmi'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import ConnectWallet from '../ConnectWallet'
 import PageWrapper from '../wrappers/PageWrapper'
 import { BigNumber } from 'ethers'
-import UserNFTs from './UserNFTs'
+import UserNFTs from '../NFTs/UserNFTs'
+import Welcome from './Welcome'
 
 const ProfileComponent = () => {
 	const { address, isConnected } = useAccount()
@@ -13,15 +14,14 @@ const ProfileComponent = () => {
 	})
 	const { disconnect } = useDisconnect()
 	const { data, isError, isLoading } = useBalance({
-		addressOrName: '0xA0Cf798816D4b9b9866b5330EEa46a18382f251e',
+		addressOrName: address,
 	})
-
-	// tx
-
 	const { config } = usePrepareSendTransaction({
 		request: { to: 'moxey.eth', value: BigNumber.from('10000000000000000') },
 	})
 	const { data: txData, isLoading: isTxLoading, isSuccess, sendTransaction } = useSendTransaction(config)
+
+	const [canMintFree, setCanMintFree] = useState(true)
 
 	return (
 		<div>
@@ -29,7 +29,7 @@ const ProfileComponent = () => {
 				<PageWrapper>Profile</PageWrapper>
 			) : (
 				<PageWrapper>
-					<div className="flex flex-col space-y-5">
+					<div className="flex flex-col w-2/3 space-y-5">
 						<div>
 							<div className="flex flex-col items-start">
 								Connected to {address}
@@ -47,6 +47,11 @@ const ProfileComponent = () => {
 								Mint
 							</button>
 						</div>
+						{canMintFree && (
+							<div>
+								<Welcome />
+							</div>
+						)}
 						<div>
 							<UserNFTs />
 						</div>

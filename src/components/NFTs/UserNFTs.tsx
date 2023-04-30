@@ -23,19 +23,27 @@ const UserNFTs = () => {
 				.catch(err => console.log('err', err))
 	}, [signer])
 
+	console.log('userNFTs', userNFTs)
+	console.log('signer', signer)
+
 	return (
-		<div>
-			{userNFTs &&
-				userNFTs.map((item, index) => {
-					return (
-						<NFT
-							uri={item.tokenURI}
-							name={item.tokenURI}
-							id={item.tokenId.toNumber()}
-							key={item.tokenId.toNumber()}
-						/>
-					)
-				})}
+		<div className="">
+			<div>
+				<p className="text-3xl">Items</p>
+			</div>
+			<div className="p-10 mt-5 bg-gray-800 rounded-md">
+				{userNFTs &&
+					userNFTs.map((item, index) => {
+						return (
+							<NFT
+								uri={item.tokenURI}
+								name={item.tokenURI}
+								id={item.tokenId.toNumber()}
+								key={item.tokenId.toNumber()}
+							/>
+						)
+					})}
+			</div>
 		</div>
 	)
 }

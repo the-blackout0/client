@@ -10,18 +10,23 @@ const Supabase = () => {
 		await supabase.from('cities').insert({ name: 'Bucharest' })
 	}
 
-	useEffect(() => {
-		const cities = supabase
+	const updateCities = async () => {
+		console.log('update ran')
+		supabase
 			.from('cities')
 			.select()
 			.then(res => {
 				setCities(res.data)
 			})
+	}
+
+	useEffect(() => {
+		updateCities()
 
 		const subscription = supabase
 			.channel(`any`)
 			.on('postgres_changes', { event: '*', schema: 'public', table: 'cities' }, res => {
-				console.log('res', res)
+				updateCities()
 			})
 			.subscribe()
 	}, [])
@@ -32,7 +37,7 @@ const Supabase = () => {
 			<div>
 				<p className="text-2xl">Supabase</p>
 				<p>Cities: {cities.map(item => item.name + ', ')}</p>
-				<p>Cities Count: {citiesCount}</p>
+                
 				<button className="p-5 mt-5 bg-red-800 rounded-md" onClick={insertCity}>
 					Insert city
 				</button>

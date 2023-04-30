@@ -12,6 +12,8 @@ const erc721Abi = [
 export const getUserNFTs = async (userAddress, contractAddress, signer) => {
 	const erc721Contract = new Contract(contractAddress, erc721Abi, signer)
 
+	console.log('ran')
+
 	const nftBalance = await erc721Contract.balanceOf(userAddress)
 	console.log('nftBalance', nftBalance.valueOf())
 	const userNFTs = []
