@@ -6,6 +6,7 @@ const Navbar = () => {
 			<div className="flex items-center justify-center mt-5 space-x-3 text-xl">
 				<a href="/supa">Supabase</a>
 				<a href="/profile">Profile</a>
+				<a href="/leaderboard">Leaderboard</a>
 			</div>
 		</div>
 	)

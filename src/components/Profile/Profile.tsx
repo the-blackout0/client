@@ -26,7 +26,9 @@ const ProfileComponent = () => {
 	return (
 		<div>
 			{!isConnected ? (
-				<PageWrapper>Profile</PageWrapper>
+				<PageWrapper>
+					<p>Please log in to access your profile</p>
+				</PageWrapper>
 			) : (
 				<PageWrapper>
 					<div className="flex flex-col w-2/3 space-y-5">
