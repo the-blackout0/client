@@ -4,6 +4,8 @@ import CardWrapper from '../Wrappers/CardWrapper'
 const NFTCard = ({ nft }) => {
 	const { name, description, image, blockchainLink, tags } = nft
 
+	console.log('nft', nft)
+
 	const handleShare = () => {
 		// Add your sharing functionality here.
 		console.log('Sharing NFT:', name)

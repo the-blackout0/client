@@ -9,6 +9,26 @@ import Welcome from './Welcome'
 import FreePack from '../FreePack/FreePack'
 import Button from '../Button'
 import UserCard from './UserCard'
+import UserPacks from './UserPacks'
+import UserAvatars from './UserAvatars'
+
+const userAvatars = [
+	{
+		id: '1',
+		name: 'Cyber Samurai',
+		imageUrl: 'https://cdn.hearthstonetopdecks.com/wp-content/uploads/2016/04/A-Light-in-the-Darkness-300x424.png',
+	},
+	{
+		id: '2',
+		name: 'Techno Ninja',
+		imageUrl: 'https://cdn.hearthstonetopdecks.com/wp-content/uploads/2016/04/A-Light-in-the-Darkness-300x424.png',
+	},
+	{
+		id: '3',
+		name: 'Digital Wizard',
+		imageUrl: 'https://cdn.hearthstonetopdecks.com/wp-content/uploads/2016/04/A-Light-in-the-Darkness-300x424.png',
+	},
+]
 
 const ProfileComponent = () => {
 	const { address, isConnected } = useAccount()
@@ -36,15 +56,18 @@ const ProfileComponent = () => {
 				<div>
 					<UserCard userData={{ address: 'asdasodkpo', image: 'asd', numNFTs: 532, xp: 1032, level: 5 }} />
 				</div>
+				<UserAvatars avatars={userAvatars} />
 
 				{canMintFree && (
 					<div>
 						<FreePack />
 					</div>
 				)}
+
 				<div>
 					<UserNFTs />
 				</div>
+				<UserPacks />
 			</div>
 		</PageWrapper>
 	)

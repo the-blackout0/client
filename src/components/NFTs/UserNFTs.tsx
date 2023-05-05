@@ -4,6 +4,11 @@ import { fetchNFTs } from './fetchNFTs'
 
 const UserNFTs = () => {
 	const [nfts, setNfts] = useState<any>([])
+	const [itemsToShow, setItemsToShow] = useState(3)
+
+	const handleViewMore = () => {
+		setItemsToShow(itemsToShow + 6)
+	}
 
 	useEffect(() => {
 		const getNFTs = async () => {
@@ -16,15 +21,19 @@ const UserNFTs = () => {
 
 	return (
 		<div className="container px-4 py-8 mx-auto">
-			<h2 className="mb-4 text-2xl font-bold text-secondary">Your NFTs</h2>
-			{nfts.length === 0 ? (
-				<p className="text-secondary">Loading NFTs...</p>
-			) : (
-				<div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-					{nfts.map(nft => (
-						<NFTCard key={nft.id} nft={nft} />
-					))}
-				</div>
+			<h2 className="mb-8 text-3xl font-bold">My NFTs</h2>
+			<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+				{nfts.slice(0, itemsToShow).map(nft => (
+					<NFTCard key={nft.id} nft={nft} />
+				))}
+			</div>
+			{itemsToShow < nfts.length && (
+				<button
+					onClick={handleViewMore}
+					className="block px-4 py-2 mx-auto mt-8 transition-colors duration-200 ease-in-out rounded-full shadow-md bg-primary text-secondary hover:bg-secondary hover:text-primary"
+				>
+					View More
+				</button>
 			)}
 		</div>
 	)
