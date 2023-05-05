@@ -1,4 +1,4 @@
-import PageWrapper from '@/components/wrappers/PageWrapper'
+import PageWrapper from '@/components/Wrappers/PageWrapper'
 import { supabase } from '@/utils/supabase-client'
 import React, { useEffect, useState } from 'react'
 
@@ -37,8 +37,8 @@ const Supabase = () => {
 			<div>
 				<p className="text-2xl">Supabase</p>
 				<p>Cities: {cities.map(item => item.name + ', ')}</p>
-                
-				<button className="p-5 mt-5 bg-red-800 rounded-md" onClick={insertCity}>
+
+				<button className="" onClick={insertCity}>
 					Insert city
 				</button>
 			</div>

@@ -3,7 +3,7 @@ import { APP_NAME } from '@/lib/consts'
 import ConnectWallet from '@/components/ConnectWallet'
 import { BookOpenIcon, CodeIcon, ShareIcon } from '@heroicons/react/outline'
 import ThemeSwitcher from '@/components/ThemeSwitcher'
-import PageWrapper from '@/components/wrappers/PageWrapper'
+import PageWrapper from '@/components/Wrappers/PageWrapper'
 
 const Home: FC = () => {
 	return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from '../Button'
-import useGetNftDetails from '@/hooks/getNftDetails'
+import useGetNftDetails from '@/hooks/useGetNftDetails'
 
 const NFT = ({ id, name, uri }) => {
 	const details = useGetNftDetails({ url: uri })
