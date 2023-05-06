@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { RiExternalLinkLine } from 'react-icons/ri'
+import { usePrepareSendTransaction, useSendTransaction, useWaitForTransaction } from 'wagmi'
 
 interface PackCardProps {
 	id: string
@@ -13,6 +14,17 @@ interface PackCardProps {
 
 const PackCard: React.FC<PackCardProps> = ({ id, name, description, imageUrl, rarities, onOpen, onViewBlockchain }) => {
 	const [selectedPack, setSelectedPack] = useState<any>(null)
+	const { config } = usePrepareSendTransaction({
+		request: {
+			to: '0x9e1cd1affb00BE10Be510CD2ceD8df8c6BdDa568',
+			value: undefined,
+		},
+	})
+	const { data, sendTransaction } = useSendTransaction(config)
+
+	const { isLoading, isSuccess } = useWaitForTransaction({
+		hash: data?.hash,
+	})
 
 	const handleClosePackModal = () => {
 		setSelectedPack(null)
@@ -54,9 +66,9 @@ const PackCard: React.FC<PackCardProps> = ({ id, name, description, imageUrl, ra
 							<button
 								type="button"
 								className="px-4 py-2 transition-colors duration-200 ease-in-out rounded-full shadow-md bg-secondary text-primary hover:bg-primary hover:text-secondary"
-								onClick={() => onViewBlockchain(selectedPack)}
+								onClick={() => sendTransaction?.()}
 							>
-								<RiExternalLinkLine className="inline-block mr-2" /> Open
+								Open Pack
 							</button>
 							<button
 								type="button"

@@ -2,7 +2,7 @@ import React from 'react'
 import CardWrapper from '../Wrappers/CardWrapper'
 import { ExternalLinkIcon, ShareIcon, SwitchHorizontalIcon } from '@heroicons/react/outline'
 
-const NFTCard = ({ nft }) => {
+const NFTCard = ({ nft, isSelected, onSelect }) => {
 	const { id, name, description, image, blockchainLink, tags } = nft
 
 	console.log('nft', nft)
@@ -17,8 +17,21 @@ const NFTCard = ({ nft }) => {
 		console.log('Trading NFT:', name)
 	}
 
+	console.log('id', id)
+
+	const handleClick = () => {
+		onSelect(id)
+	}
+
+	console.log('isSelected', isSelected)
+
 	return (
-		<CardWrapper title={name.toUpperCase()}>
+		<CardWrapper
+			title={name.toUpperCase()}
+			onClick={handleClick}
+			customClassName={`${isSelected ? 'border-green-500' : 'border-gray-200'}`}
+		>
+			{isSelected && <p>selected</p>}
 			{image && (
 				<div className="mb-4">
 					<img src={image} alt={name} className="mx-auto rounded-lg" />

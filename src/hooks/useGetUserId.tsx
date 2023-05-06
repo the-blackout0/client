@@ -5,10 +5,6 @@ const useGetUserId = walletAddr => {
 	const [userId, setUserId] = useState(null)
 	const [loading, setLoading] = useState(true)
 
-	console.log('userId', userId)
-
-	console.log('walletAddr', walletAddr)
-
 	useEffect(() => {
 		async function fetchUserId() {
 			try {

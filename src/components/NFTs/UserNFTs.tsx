@@ -1,13 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import NFTCard from './NFTCard'
 import { fetchNFTs } from './fetchNFTs'
+import { useAtom } from 'jotai'
+import { selectedDeckAtom } from '@/store/atom'
 
 const UserNFTs = () => {
 	const [nfts, setNfts] = useState<any>([])
 	const [itemsToShow, setItemsToShow] = useState(3)
+	const [selectedDeck, setSelectedDeck] = useAtom(selectedDeckAtom)
+
+	console.log('selectedDeck', selectedDeck)
 
 	const handleViewMore = () => {
 		setItemsToShow(itemsToShow + 6)
+	}
+
+	const handleSelect = (id: number) => {
+		if (selectedDeck.includes(id)) {
+			setSelectedDeck(selectedDeck.filter(cardId => cardId !== id))
+		} else {
+			setSelectedDeck([...selectedDeck, id])
+		}
 	}
 
 	useEffect(() => {
@@ -24,7 +37,12 @@ const UserNFTs = () => {
 			<h2 className="mb-8 text-3xl font-bold">My NFTs</h2>
 			<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 				{nfts.slice(0, itemsToShow).map(nft => (
-					<NFTCard key={nft.id} nft={nft} />
+					<NFTCard
+						key={nft.id}
+						nft={nft}
+						isSelected={selectedDeck.includes(nft.id)}
+						onSelect={handleSelect}
+					/>
 				))}
 			</div>
 			{itemsToShow < nfts.length && (

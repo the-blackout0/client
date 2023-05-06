@@ -9,7 +9,7 @@ const App = ({ Component, pageProps }) => {
 		<ThemeProvider attribute="class">
 			<Web3Provider>
 				<Component {...pageProps} />
-				<FloatingButton href="https://your-game-url.com" text="Go to the Game" />
+				<FloatingButton text="Go to the Game" />
 			</Web3Provider>
 		</ThemeProvider>
 	)
