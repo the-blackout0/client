@@ -1,6 +1,6 @@
 import { useTheme } from 'next-themes'
 import { APP_NAME } from '@/lib/consts'
-import { createClient, WagmiConfig, configureChains } from 'wagmi'
+import { createClient, WagmiConfig, configureChains, useConnect } from 'wagmi'
 import { mainnet } from 'wagmi/chains'
 import { canto } from '@wagmi/chains'
 import { ConnectKitProvider, getDefaultClient } from 'connectkit'

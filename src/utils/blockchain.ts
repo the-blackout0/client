@@ -1,6 +1,8 @@
 import wagmi from 'wagmi'
 import { Contract } from '@ethersproject/contracts'
-import { BigNumber } from 'ethers'
+import { BigNumber, ethers } from 'ethers'
+
+import PacksContractABI from '../contracts/Packs.json'
 
 // ERC-721 ABI with the required methods
 const erc721Abi = [
@@ -28,3 +30,23 @@ export const getUserNFTs = async (userAddress, contractAddress, signer) => {
 	console.log('userNFTs', userNFTs)
 	return userNFTs
 }
+
+const contractAddresses = {
+	Packs: 'YOUR_PACKS_CONTRACT_ADDRESS',
+	Cards: 'YOUR_CARDS_CONTRACT_ADDRESS',
+	Avatars: 'YOUR_AVATARS_CONTRACT_ADDRESS',
+}
+
+export const getPacksContract = (provider: ethers.providers.Provider) => {
+	// todo: fix this
+	// @ts-ignore
+	return new ethers.Contract(contractAddresses.Packs, PacksContractABI, provider.getSigner())
+}
+
+// export const getCardsContract = (provider: ethers.providers.Provider) => {
+// 	return new ethers.Contract(contractAddresses.Cards, CardsContractABI, provider.getSigner())
+// }
+
+// export const getAvatarsContract = (provider: ethers.providers.Provider) => {
+// 	return new ethers.Contract(contractAddresses.Avatars, AvatarsContractABI, provider.getSigner())
+// }

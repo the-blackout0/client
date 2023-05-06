@@ -8,9 +8,11 @@ import UserNFTs from '../NFTs/UserNFTs'
 import Welcome from './Welcome'
 import FreePack from '../FreePack/FreePack'
 import Button from '../Button'
-import UserCard from './UserCard'
+import UserCard from './UserHeader'
 import UserPacks from './UserPacks'
 import UserAvatars from './UserAvatars'
+import UserHeader from './UserHeader'
+import { upsertPlayer } from '@/utils/supabase-client'
 
 const userAvatars = [
 	{
@@ -30,9 +32,26 @@ const userAvatars = [
 	},
 ]
 
+const userData = {
+	address: '0x9e1cd1affb00BE10Be510CD2ceD8df8c6BdDa568',
+
+	nftCount: 532,
+	xp: 1032,
+	level: 5,
+	wins: 20,
+	imageUrl: 'https://cdn.hearthstonetopdecks.com/wp-content/uploads/2016/04/A-Light-in-the-Darkness-300x424.png',
+}
 const ProfileComponent = () => {
-	const { address, isConnected } = useAccount()
+	const { address, isConnected } = useAccount({
+		onConnect({ address, connector, isReconnected }) {
+			console.log('connected!')
+			upsertPlayer({ walletAddr: address, name: address })
+		},
+	})
 	const { connect } = useConnect({
+		onSuccess(data) {
+			console.log('Connect', data)
+		},
 		connector: new InjectedConnector(),
 	})
 	const { disconnect } = useDisconnect()
@@ -46,6 +65,8 @@ const ProfileComponent = () => {
 
 	const [canMintFree, setCanMintFree] = useState(true)
 
+	connect
+
 	return !isConnected ? (
 		<PageWrapper>
 			<p>Please log in to access your profile</p>
@@ -53,9 +74,8 @@ const ProfileComponent = () => {
 	) : (
 		<PageWrapper>
 			<div className="flex flex-col w-2/3 space-y-5">
-				<div>
-					<UserCard userData={{ address: 'asdasodkpo', image: 'asd', numNFTs: 532, xp: 1032, level: 5 }} />
-				</div>
+				<UserHeader {...userData} />
+
 				<UserAvatars avatars={userAvatars} />
 
 				{canMintFree && (

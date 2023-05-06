@@ -1,5 +1,6 @@
 import React from 'react'
 import ConnectWallet from '../ConnectWallet'
+import { upsertPlayer } from '@/utils/supabase-client'
 
 const Navbar: React.FC = () => {
 	return (
