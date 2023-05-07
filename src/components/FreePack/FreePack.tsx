@@ -4,12 +4,12 @@ import Button from '../Button'
 import CardWrapper from '../Wrappers/CardWrapper'
 import { usePacks } from '@/hooks/usePacks'
 import { useAccount, usePrepareSendTransaction, useSendTransaction, useWaitForTransaction } from 'wagmi'
-import { updatePlayerDeck, updateUserDeck } from '@/utils/supabase-client'
+import { updateUserDeck } from '@/utils/supabase-client'
 import useGetUserId from '@/hooks/useGetUserId'
 
 const cardIds = [1, 4, 5, 2, 8]
 
-const FreePackCard = ({ onSendTransaction }) => {
+const FreePackCard = () => {
 	const { address, isConnecting, isDisconnected } = useAccount()
 	console.log('address', address)
 	const { userId, loading } = useGetUserId(address)
@@ -58,9 +58,7 @@ const FreePackCard = ({ onSendTransaction }) => {
 		<CardWrapper title="Get Your Free Starting Pack">
 			<p className="mb-4 text-secondary">Receive 1 Avatar, 5 Cards, and 1 Regular Pack for free.</p>
 
-			<Button onClick={() => sendTransaction?.()} disabled={isLoading || !sendTransaction}>
-				{isLoading ? 'Claiming...' : 'Claim now'}
-			</Button>
+			<Button onClick={() => sendTransaction?.()}>{isLoading ? 'Claiming...' : 'Claim now'}</Button>
 			{isSuccess && (
 				<div>
 					Successfully claimed the free pack!{' '}

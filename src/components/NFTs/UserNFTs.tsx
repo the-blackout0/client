@@ -3,8 +3,14 @@ import NFTCard from './NFTCard'
 import { fetchNFTs } from './fetchNFTs'
 import { useAtom } from 'jotai'
 import { selectedDeckAtom } from '@/store/atom'
+import useGetUserId from '@/hooks/useGetUserId'
+import { useAccount } from 'wagmi'
 
 const UserNFTs = () => {
+	const { address } = useAccount()
+
+	const { userId } = useGetUserId(address)
+
 	const [nfts, setNfts] = useState<any>([])
 	const [itemsToShow, setItemsToShow] = useState(3)
 	const [selectedDeck, setSelectedDeck] = useAtom(selectedDeckAtom)
@@ -25,7 +31,7 @@ const UserNFTs = () => {
 
 	useEffect(() => {
 		const getNFTs = async () => {
-			const fetchedNFTs = await fetchNFTs()
+			const fetchedNFTs = await fetchNFTs(userId)
 			setNfts(fetchedNFTs)
 		}
 

@@ -26,7 +26,7 @@ const LeaderboardPage = () => {
 
 	return (
 		<PageWrapper>
-			<Leaderboard leaderboardData={leaderboardData} />
+			<Leaderboard />
 		</PageWrapper>
 	)
 }

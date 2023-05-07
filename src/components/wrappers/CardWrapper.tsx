@@ -1,6 +1,16 @@
 import React from 'react'
 
-const CardWrapper = ({ title, children, onClick, customClassName }) => {
+const CardWrapper = ({
+	title,
+	children,
+	onClick,
+	customClassName,
+}: {
+	title?: string
+	children: React.ReactNode
+	onClick?: () => void
+	customClassName?: string
+}) => {
 	return (
 		<div className={`p-4 rounded-lg shadow-lg bg-darker ${customClassName}`} onClick={onClick}>
 			{title && (

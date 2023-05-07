@@ -67,6 +67,7 @@ const MyPacks: React.FC = () => {
 			<h2 className="mb-8 text-3xl font-bold">My Packs</h2>
 			<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 				{packs.slice(0, itemsToShow).map(pack => (
+					// @ts-ignore
 					<PackCard
 						key={pack.id}
 						{...pack}
