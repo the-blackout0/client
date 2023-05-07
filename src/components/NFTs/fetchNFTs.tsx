@@ -1,3 +1,8 @@
+import image1 from '/src/assets/cards/C_tech_specialist.png'
+import image2 from '/src/assets/cards/C_energy_shield.png'
+import image3 from '/src/assets/cards/C_cyborg_warrior.png'
+import image4 from '/src/assets/cards/C_scavenger.png'
+
 export const fetchNFTs = async userId => {
 	// Replace this mock function with the actual function to fetch NFTs from the blockchain.
 	return new Promise(resolve => {
@@ -5,59 +10,59 @@ export const fetchNFTs = async userId => {
 			resolve([
 				{
 					id: 1,
-					name: 'NFT 1',
-					description: 'This is NFT 1 description.',
-					image: 'https://cdn.hearthstonetopdecks.com/wp-content/uploads/2016/04/A-Light-in-the-Darkness-300x424.png',
+					name: 'Tech Specialist',
+					description: 'A skilled hacker who can help players gain access to valuable resources. ',
+					image: image1.src,
 					blockchainLink: 'https://example.com/blockchain-link/1',
-					tags: ['Tag1', 'Tag2'],
+					tags: ['Rare', 'Level 3'],
 				},
 				{
 					id: 2,
-					name: 'NFT 2',
-					description: 'This is NFT 2 description.',
-					image: 'https://cdn.hearthstonetopdecks.com/wp-content/uploads/2016/04/A-Light-in-the-Darkness-300x424.png',
+					name: 'Energy Shield',
+					description: 'A high-tech shield that can absorb damage.',
+					image: image2.src,
 					blockchainLink: 'https://example.com/blockchain-link/2',
-					tags: ['Tag1', 'Tag3'],
+					tags: ['Super Rare', 'Level 1'],
 				},
 				{
 					id: 3,
-					name: 'NFT 3',
-					description: 'This is NFT 2 description.',
-					image: 'https://cdn.hearthstonetopdecks.com/wp-content/uploads/2016/04/A-Light-in-the-Darkness-300x424.png',
+					name: 'Cyborg Warrior',
+					description: 'A soldier who has been augmented with cybernetic enhancements.',
+					image: image3.src,
 					blockchainLink: 'https://example.com/blockchain-link/2',
-					tags: ['Tag1', 'Tag3'],
+					tags: ['Legendary', 'Level 2'],
 				},
 				{
 					id: 4,
-					name: 'NFT 4',
-					description: 'This is NFT 2 description.',
-					image: 'https://cdn.hearthstonetopdecks.com/wp-content/uploads/2016/04/A-Light-in-the-Darkness-300x424.png',
+					name: 'Scavenger',
+					description: 'A survivor who is skilled at scavenging for supplies in the post-apocalyptic world.',
+					image: image4.src,
 					blockchainLink: 'https://example.com/blockchain-link/2',
-					tags: ['Tag1', 'Tag3'],
+					tags: ['Epic', 'Level 1'],
 				},
 				{
 					id: 5,
-					name: 'NFT 5',
-					description: 'This is NFT 2 description.',
-					image: 'https://cdn.hearthstonetopdecks.com/wp-content/uploads/2016/04/A-Light-in-the-Darkness-300x424.png',
+					name: 'EMP Grenade',
+					description: 'A powerful weapon that can disable enemy cards.',
+					image: image1.src,
 					blockchainLink: 'https://example.com/blockchain-link/2',
-					tags: ['Tag1', 'Tag3'],
+					tags: ['Super Rare', 'Level 9'],
 				},
 				{
-					id: 2,
-					name: 'NFT 2',
-					description: 'This is NFT 2 description.',
-					image: 'https://cdn.hearthstonetopdecks.com/wp-content/uploads/2016/04/A-Light-in-the-Darkness-300x424.png',
+					id: 6,
+					name: 'Cyborg Warrior',
+					description: 'A soldier who has been augmented with cybernetic enhancements.',
+					image: image3.src,
 					blockchainLink: 'https://example.com/blockchain-link/2',
-					tags: ['Tag1', 'Tag3'],
+					tags: ['Legendary', 'Level 4'],
 				},
 				{
-					id: 2,
-					name: 'NFT 2',
-					description: 'This is NFT 2 description.',
-					image: 'https://cdn.hearthstonetopdecks.com/wp-content/uploads/2016/04/A-Light-in-the-Darkness-300x424.png',
-					blockchainLink: 'https://example.com/blockchain-link/2',
-					tags: ['Tag1', 'Tag3'],
+					id: 7,
+					name: 'Tech Specialist',
+					description: 'A skilled hacker who can help players gain access to valuable resources. ',
+					image: image1.src,
+					blockchainLink: 'https://example.com/blockchain-link/1',
+					tags: ['Rare', 'Level 7'],
 				},
 			])
 		}, 1000)

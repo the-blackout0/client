@@ -6,6 +6,9 @@ import { usePacks } from '@/hooks/usePacks'
 import { useAccount, usePrepareSendTransaction, useSendTransaction, useWaitForTransaction } from 'wagmi'
 import { updateUserDeck } from '@/utils/supabase-client'
 import useGetUserId from '@/hooks/useGetUserId'
+import RewardCard from './RewardCard'
+
+import { UserIcon } from '@heroicons/react/outline'
 
 const cardIds = [1, 4, 5, 2, 8]
 
@@ -54,11 +57,23 @@ const FreePackCard = () => {
 		}
 	}, [isSuccess, address, userId])
 
+	const rewards = [
+		{ icon: <UserIcon />, name: 'Avatar', quantity: 1 },
+		{ icon: <UserIcon />, name: 'Card', quantity: 5 },
+		{ icon: <UserIcon />, name: 'Regular Pack', quantity: 1 },
+	]
+
 	return (
 		<CardWrapper title="Get Your Free Starting Pack">
-			<p className="mb-4 text-secondary">Receive 1 Avatar, 5 Cards, and 1 Regular Pack for free.</p>
-
-			<Button onClick={() => sendTransaction?.()}>{isLoading ? 'Claiming...' : 'Claim now'}</Button>
+			<p className="text-lg ">You will receive:</p>
+			<div className="grid gap-4 mt-4 mb-8 sm:grid-cols-2 md:grid-cols-3">
+				{rewards.map((reward, index) => (
+					<RewardCard icon={reward.icon} key={index} name={reward.name} quantity={reward.quantity} />
+				))}
+			</div>
+			<Button onClick={() => sendTransaction?.()} disabled={isLoading || !sendTransaction}>
+				{isLoading ? 'Claiming...' : 'Claim now'}
+			</Button>
 			{isSuccess && (
 				<div>
 					Successfully claimed the free pack!{' '}

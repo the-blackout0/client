@@ -12,7 +12,7 @@ const UserNFTs = () => {
 	const { userId } = useGetUserId(address)
 
 	const [nfts, setNfts] = useState<any>([])
-	const [itemsToShow, setItemsToShow] = useState(3)
+	const [itemsToShow, setItemsToShow] = useState(4)
 	const [selectedDeck, setSelectedDeck] = useAtom(selectedDeckAtom)
 
 	console.log('selectedDeck', selectedDeck)

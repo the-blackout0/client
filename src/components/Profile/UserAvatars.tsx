@@ -20,11 +20,11 @@ const UserAvatars: React.FC<UserAvatarsProps> = ({ avatars }) => {
 
 	return (
 		<div className="space-y-4">
-			<h2 className="mb-2 text-xl font-semibold">My Avatars</h2>
-			<p className="text-sm text-secondary">
+			<h2 className="mb-2 text-3xl font-semibold">My Avatars</h2>
+			{/* <p className="text-sm text-secondary">
 				Avatars are NFTs that represent your in-game character. You can equip your favorite avatar to customize
 				your appearance in the game.
-			</p>
+			</p> */}
 			<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
 				{avatars.map(avatar => (
 					<AvatarCard

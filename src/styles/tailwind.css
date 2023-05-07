@@ -1,3 +1,37 @@
 .btn {
-	@apply rounded-xl text-black font-bold items-center py-[5px] px-3 cursor-pointer p-5 mt-5 bg-primary;
+	@apply rounded-xl text-black font-bold items-center py-[5px] px-3 cursor-pointer p-5 mt-5 bg-primary space-x-5;
+}
+
+.btn:active {
+	@apply bg-darker;
+}
+
+.btn-outline {
+	@apply border-2 border-primary rounded-xl bg-dark text-primary font-bold items-center py-[5px] px-3 cursor-pointer p-5 mt-5;
+}
+
+.badge {
+	position: relative;
+	cursor: pointer;
+}
+
+.badge-info {
+	@apply bg-dark;
+	position: absolute;
+	left: 50%;
+	bottom: 100%;
+	transform: translateX(0%) translateY(125%);
+	display: none;
+	width: 380px;
+	padding: 16px;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	opacity: 0.5;
+	transition: opacity 0.3s ease-in-out;
+	z-index: 1;
+}
+
+.badge:hover .badge-info {
+	display: block;
+	opacity: 1;
 }

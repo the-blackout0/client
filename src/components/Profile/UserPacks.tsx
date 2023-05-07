@@ -1,5 +1,9 @@
 import React, { useState } from 'react'
 import PackCard from '../NFTs/PackCard'
+import image1 from '/src/assets/deck/deck1.png'
+import image2 from '/src/assets/deck/deck2.png'
+import image3 from '/src/assets/deck/deck3.png'
+import image4 from '/src/assets/deck/deck4.png'
 
 // Replace this with the actual data fetched from the backend
 const packs = [
@@ -7,39 +11,48 @@ const packs = [
 		id: 1,
 		name: 'Starter Pack',
 		description: 'A basic pack containing random cards.',
-		imageUrl: 'https://cdn.hearthstonetopdecks.com/wp-content/uploads/2016/04/A-Light-in-the-Darkness-300x424.png',
+		imageUrl: image1.src,
 		rarities: [
 			{ name: 'Common', chance: 60 },
 			{ name: 'Rare', chance: 30 },
 			{ name: 'Epic', chance: 7 },
-			{ name: 'Legendary', chance: 2.5 },
-			{ name: 'Mythical', chance: 0.5 },
+			{ name: 'Legendary', chance: 3 },
 		],
 	},
 	{
-		id: 1,
-		name: 'Starter Pack',
-		description: 'A basic pack containing random cards.',
-		imageUrl: 'https://cdn.hearthstonetopdecks.com/wp-content/uploads/2016/04/A-Light-in-the-Darkness-300x424.png',
+		id: 2,
+		name: 'Rare Pack',
+		description: 'One of the best ways to update your deck with quality cards.',
+		imageUrl: image2.src,
 		rarities: [
-			{ name: 'Common', chance: 60 },
-			{ name: 'Rare', chance: 30 },
-			{ name: 'Epic', chance: 7 },
-			{ name: 'Legendary', chance: 2.5 },
-			{ name: 'Mythical', chance: 0.5 },
+			{ name: 'Common', chance: 40 },
+			{ name: 'Rare', chance: 40 },
+			{ name: 'Epic', chance: 10 },
+			{ name: 'Legendary', chance: 10 },
 		],
 	},
 	{
-		id: 1,
-		name: 'Starter Pack',
-		description: 'A basic pack containing random cards.',
-		imageUrl: 'https://cdn.hearthstonetopdecks.com/wp-content/uploads/2016/04/A-Light-in-the-Darkness-300x424.png',
+		id: 3,
+		name: 'Legendary Pack',
+		description: 'The most prestigious pack, having a significant change of dropping legendary cards.',
+		imageUrl: image3.src,
 		rarities: [
-			{ name: 'Common', chance: 60 },
-			{ name: 'Rare', chance: 30 },
-			{ name: 'Epic', chance: 7 },
-			{ name: 'Legendary', chance: 2.5 },
-			{ name: 'Mythical', chance: 0.5 },
+			{ name: 'Common', chance: 10 },
+			{ name: 'Rare', chance: 17 },
+			{ name: 'Epic', chance: 23 },
+			{ name: 'Legendary', chance: 50 },
+		],
+	},
+	{
+		id: 3,
+		name: 'Super Rare Pack',
+		description: 'Better than a Rare Pack, but not as good as a Legendary Pack.',
+		imageUrl: image4.src,
+		rarities: [
+			{ name: 'Common', chance: 10 },
+			{ name: 'Rare', chance: 17 },
+			{ name: 'Epic', chance: 23 },
+			{ name: 'Legendary', chance: 50 },
 		],
 	},
 	// Add more pack data

@@ -12,7 +12,13 @@ interface AvatarCardProps {
 const AvatarCard: React.FC<AvatarCardProps> = ({ id, name, imageUrl, onViewBlockchain, onEquip }) => {
 	return (
 		<div className="p-4 space-y-2 rounded-lg shadow-md bg-cardBackground">
-			<img className="object-cover w-full h-32 rounded-md" src={imageUrl} alt={name} />
+			<img
+				className="object-cover w-full h-32 rounded-md "
+				style={{ objectPosition: '50% 25%' }}
+				src={imageUrl}
+				alt={name}
+			/>
+			<p className="mb-2 text-lg">{name}</p>
 			<div className="flex items-center justify-between">
 				<button
 					type="button"
